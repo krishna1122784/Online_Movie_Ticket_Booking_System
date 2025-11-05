@@ -1,0 +1,8 @@
+<form th:action="@{/admin/add-movie}" th:object="${movies}" method="post">
+    <input type="text" th:field="*{title}" placeholder="Title"/><br/>
+    <input type="text" th:field="*{description}" placeholder="Description"/><br/>
+    <input type="text" th:field="*{showDate}" placeholder="Date"/><br/>
+    <input type="text" th:field="*{showTime}" placeholder="Time"/><br/>
+    <input type="number" th:field="*{totalSeats}" placeholder="Seats"/><br/>
+    <button type="submit">Add Movie</button>
+</form>
