@@ -15,7 +15,13 @@ public class User {
     private String password;
     private String role; // "USER" or "ADMIN"
 
-    // Getters and setters
+    // Default (no-argument) constructor is implicitly used by JPA,
+    // and explicitly used in UserController for fallback.
+    public User() {
+        // Required by JPA and used for creating empty instances
+    }
+
+    // Getters and setters (omitted for brevity, but they exist in your file)
 
     public Long getId() {
         return id;

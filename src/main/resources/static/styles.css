@@ -1,0 +1,149 @@
+/* src/main/resources/static/styles.css */
+
+/* --- General & Body Styling --- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6; /* Light gray background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+.back-link, .add-button, .action-link {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* --- Admin Dashboard (admin-home.html) --- */
+.admin-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.admin-header {
+    color: #007bff; /* Primary blue color */
+    text-align: center;
+    margin-bottom: 5px;
+}
+.welcome-message {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+.card-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.admin-card {
+    flex-basis: 30%;
+    background: #e9ecef;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+.card-icon {
+    font-size: 2.5em;
+    display: block;
+    margin-bottom: 10px;
+}
+.add-card { border-top: 5px solid #28a745; } /* Green */
+.view-card { border-top: 5px solid #ffc107; } /* Yellow */
+.home-card { border-top: 5px solid #17a2b8; } /* Cyan */
+
+
+/* --- Forms (add-movie.html) --- */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.movie-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.movie-form input[type="text"],
+.movie-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding in width */
+}
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px;
+}
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Movie List Table (movie-list.html) --- */
+.list-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.movie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.movie-table th, .movie-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.movie-table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+.action-cells {
+    white-space: nowrap;
+}
+.edit-btn {
+    background-color: #ffc107; /* Yellow */
+    color: #333;
+    margin-right: 5px;
+}
+.delete-btn {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+.edit-btn:hover { background-color: #e0a800; }
+.delete-btn:hover { background-color: #c82333; }

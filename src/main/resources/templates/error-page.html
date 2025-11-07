@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Required</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+        border-top: 5px solid #ffc107; /* Yellow Accent */
+    }
+    h1 {
+        color: #dc3545;
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    .icon {
+        font-size: 3em;
+        color: #ffc107; /* Warning yellow */
+        margin-bottom: 20px;
+    }
+    .guidance-message {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+        color: #6c757d;
+    }
+    .nav-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .nav-link:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="icon">🎟️</div>
+  <h1>Review Access Denied</h1>
+
+  <p class="guidance-message" th:text="${error}">
+    This line will be replaced by the controller's error message.
+  </p>
+
+  <p class="guidance-message">
+    To ensure **genuine and valuable feedback**, you must first have a **booked ticket** for this movie.
+  </p>
+
+  <p>
+    <a th:href="@{/booking}" class="nav-link">Book a Ticket Now</a>
+  </p>
+  <p>
+    <a th:href="@{/user}" class="nav-link">Go to Dashboard</a>
+  </p>
+</div>
+</body>
+</html>

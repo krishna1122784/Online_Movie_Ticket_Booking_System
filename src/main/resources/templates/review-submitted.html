@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Review Submitted</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f7f4; /* Light mint green background */
+        color: #333;
+        text-align: center;
+        padding-top: 80px;
+    }
+    .container {
+        background-color: #ffffff;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        max-width: 550px;
+        margin: 0 auto;
+        border-top: 5px solid #28a745; /* Success green accent */
+    }
+    h1 {
+        color: #28a745; /* Success color */
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    .icon {
+        font-size: 4em;
+        color: #ffc107; /* Star yellow */
+        margin-bottom: 20px;
+        animation: pulse 1.5s infinite;
+    }
+    .message {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 40px;
+        line-height: 1.5;
+    }
+    /* Button Styling */
+    .button-group a {
+        display: inline-block;
+        padding: 12px 25px;
+        margin: 10px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1em;
+        transition: background-color 0.3s ease, transform 0.2s;
+        border: 2px solid transparent;
+    }
+    .dashboard-button {
+        background-color: #007bff; /* Primary Blue */
+        color: white;
+    }
+    .dashboard-button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+    .book-button {
+        background-color: #6c757d; /* Secondary Gray */
+        color: white;
+    }
+    .book-button:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+    }
+    /* Animation */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="icon">🌟</div>
+  <h1>Review Submitted!</h1>
+  <p class="message">
+    Thank you for sharing your **valuable feedback**! Your honest review is now live and helps other movie lovers decide what to watch next.
+  </p>
+
+  <div class="button-group">
+    <a th:href="@{/user}" class="dashboard-button">
+      Go to Dashboard
+    </a>
+    <a th:href="@{/booking}" class="book-button">
+      Book another ticket
+    </a>
+  </div>
+</div>
+</body>
+</html>

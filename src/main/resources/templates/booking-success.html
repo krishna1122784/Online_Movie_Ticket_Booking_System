@@ -1,8 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Booking Success</title></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed!</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        .success-icon {
+            color: #4CAF50; /* Green checkmark */
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #388e3c; /* Darker green heading */
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+        .action-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1976d2; /* Blue button */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .action-link:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
 <body>
-<h2>✅ Ticket Booked Successfully!</h2>
-<p>Enjoy your movie!</p>
+
+<div class="container">
+    <div class="success-icon">✓</div>
+    <h2>Booking Confirmed!</h2>
+    <p>Your movie tickets have been successfully reserved.</p>
+    <p>Thank you for choosing our Movie Review System.</p>
+
+    <a th:href="@{/user}" class="action-link" style="margin-right: 15px;">Go to Dashboard</a>
+    <a th:href="@{/}" class="action-link">Return to Home</a>
+</div>
+
 </body>
 </html>

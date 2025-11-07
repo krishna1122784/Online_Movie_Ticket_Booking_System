@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Book Ticket</title></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Tickets</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <style>
+        .booking-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
 <body>
-<h2>Book Your Movie Ticket</h2>
-<form th:action="@{/book-ticket}" th:object="${ticket}" method="post">
-    <label>User ID: <input type="number" th:field="*{userId}" /></label><br/>
-    <label>Movie:
-        <select th:field="*{movieId}">
-            <option th:each="movie : ${moviesList}" th:value="${movie.id}" th:text="${movie.title}"></option>
-        </select>
-    </label><br/>
-    <label>Seats: <input type="number" th:field="*{seatsBooked}" /></label><br/>
-    <button type="submit">Book Ticket</button>
-</form>
+
+<div class="booking-container">
+    <h1 class="admin-header">Book Your Tickets 🍿</h1>
+
+    <form th:action="@{/booking}" th:object="${ticket}" method="post" class="movie-form">
+
+        <input type="hidden" th:field="*{userId}" th:value="${currentUserId}" />
+
+        <input type="hidden" th:field="*{movieId}" />
+
+        <div class="form-group">
+            <label for="movieTitle">Select Movie:</label>
+            <select id="movieTitle" th:field="*{movieTitle}" required>
+                <option value="">-- Choose a Movie --</option>
+                <option
+                        th:each="movie : ${moviesList}"
+                        th:value="${movie.title}"
+                        th:text="${movie.title + ' (' + movie.releaseYear + ')'}">
+                    Movie Title (Year)
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="showTime">Show Time:</label>
+            <select id="showTime" th:field="*{showTime}" required>
+                <option value="">-- Select Time --</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="seatNumber">Seat(s) (e.g., A1, A2):</label>
+            <input type="text" id="seatNumber" th:field="*{seatNumber}" required>
+        </div>
+
+        <button type="submit" class="submit-button">Confirm Booking</button>
+    </form>
+
+    <a th:href="@{/}" class="back-link">← Return to Home</a>
+</div>
 </body>
 </html>

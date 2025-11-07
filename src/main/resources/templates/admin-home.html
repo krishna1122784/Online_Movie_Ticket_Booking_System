@@ -1,3 +1,37 @@
-<h2>Welcome Admin</h2>
-<a href="/admin/add-movie">Add Movie</a><br/>
-<a href="/admin/movies">View Movies</a>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="admin-container">
+    <h1 class="admin-header">🎬 Movie Admin Portal</h1>
+    <p class="welcome-message">Manage your movie database and system configurations.</p>
+
+    <div class="card-grid">
+
+        <a th:href="@{/admin/add-movie}" class="admin-card add-card">
+            <span class="card-icon">➕</span>
+            <h3>Add New Movie</h3>
+            <p>Create and upload new movie entries to the system.</p>
+        </a>
+
+        <a th:href="@{/admin/movies}" class="admin-card view-card">
+            <span class="card-icon">👁️</span>
+            <h3>View All Movies</h3>
+            <p>Review, edit, and delete existing movie entries.</p>
+        </a>
+
+        <a th:href="@{/}" class="admin-card home-card">
+            <span class="card-icon">🏠</span>
+            <h3>Return to Public Site</h3>
+            <p>Go back to the main user-facing homepage.</p>
+        </a>
+
+    </div>
+</div>
+</body>
+</html>

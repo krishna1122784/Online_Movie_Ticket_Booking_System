@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Honest Movie Review</title>
+    <style>
+        /* CSS STYLES (Provided in the previous response) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            color: #343a40;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #17a2b8;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #6c757d;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+        .rating-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .rating-box {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .rating-box:hover {
+            background-color: #e2e6ea;
+            transform: scale(1.05);
+        }
+        .rating-box.selected {
+            background-color: #28a745; /* Green for selection */
+            color: white;
+            border-color: #218838;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+        #feedback-message {
+            min-height: 40px;
+            line-height: 40px;
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none; /* Hidden by default */
+            font-weight: bold;
+            padding: 0 15px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #138496;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Your Valuable Review</h1>
+    <h2>Sharing your honest message about: <span th:text="${movieTitle}"></span></h2>
+
+    <div id="feedback-message"></div>
+
+    <form action="#" th:action="@{/review/submit}" th:object="${review}" method="post">
+
+        <input type="hidden" th:field="*{movieTitle}" th:value="${movieTitle}">
+
+        <input type="hidden" th:field="*{rating}" id="rating-input" required>
+
+        <h3>1. Rate the Movie (1 to 10)</h3>
+        <div class="rating-grid" id="rating-container">
+        </div>
+
+        <h3>2. Your Honest Comment</h3>
+        <textarea th:field="*{comment}" id="comment" placeholder="What are your honest thoughts about the movie?" required></textarea>
+
+        <button type="submit" class="submit-btn">Submit Review</button>
+    </form>
+
+    <p style="margin-top: 30px;"><a th:href="@{/user}">Go back to the Dashboard</a></p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('rating-container');
+        const ratingInput = document.getElementById('rating-input'); // This is now bound via th:field="*{rating}"
+        const feedbackBox = document.getElementById('feedback-message');
+
+        const feedbackMessages = {
+            1: "Ouch! That's a rough score. Tell us what went wrong.",
+            2: "A low score. We hope the comments section helps explain.",
+            3: "It was below average. Your perspective is important.",
+            4: "Needs improvement. Thanks for your honesty.",
+            5: "It was just okay. Middle of the road.",
+            6: "A solid pass! Not bad at all.",
+            7: "Good! A positive rating.",
+            8: "Great movie! We're glad you enjoyed it.",
+            9: "Fantastic! A near-perfect experience.",
+            10: "A masterpiece! Thank you for the perfect score!"
+        };
+
+        // Generate 10 rating boxes
+        for (let i = 1; i <= 10; i++) {
+            const box = document.createElement('div');
+            box.className = 'rating-box';
+            box.textContent = i;
+            box.setAttribute('data-rating', i);
+
+            box.addEventListener('click', function() {
+                // Remove 'selected' class from all boxes
+                document.querySelectorAll('.rating-box').forEach(b => b.classList.remove('selected'));
+
+                // Add 'selected' class to the clicked box
+                box.classList.add('selected');
+
+                // Set the hidden input value (This is the critical line for submission)
+                ratingInput.value = i;
+
+                // Show feedback message
+                feedbackBox.textContent = "Thank you for your rating of " + i + "/10! " + feedbackMessages[i];
+                feedbackBox.style.display = 'block';
+            });
+            container.appendChild(box);
+        }
+    });
+</script>
+</body>
+</html>

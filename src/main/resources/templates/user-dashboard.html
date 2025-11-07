@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            text-align: center; /* Center content for better look */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Reset text alignment inside container */
+        }
+        h1 {
+            color: #d9534f; /* Movie red color */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Name Box Styling (Unchanged) */
+        .name-box-container {
+            margin: 0 auto 30px auto; /* Center the box */
+            padding: 15px;
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 8px;
+            display: table; /* Use table/inline-block to wrap content */
+            text-align: center;
+        }
+        .user-name {
+            font-size: 1.5em;
+            color: #0056b3;
+            font-weight: bold;
+            margin: 0;
+            display: block;
+        }
+
+        /* --- NEW STYLING FOR THE URGENT MESSAGE --- */
+        .urgent-message {
+            text-align: center;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #ff9800; /* Orange urgency */
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: #fff9e6; /* Light yellow background */
+            border: 1px dashed #ffc107;
+            border-radius: 5px;
+        }
+        /* --- END NEW STYLING --- */
+
+        .section-title {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        .book-link {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .book-link:hover {
+            background-color: #e0a800;
+        }
+        .back-home a {
+            display: inline-block;
+            margin-top: 40px;
+            color: #6c757d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎥 CineVerse Central 🍿</h1>
+
+    <div class="name-box-container">
+        <span class="user-name">Krishna Kumar Choudhary</span>
+    </div>
+
+    <div class="urgent-message">
+        🛑 **Wait!** You're missing the action! Why take time? Fast book the ticket and enjoy the movie before it sells out!
+    </div>
+
+    <h2 class="section-title">Book New Ticket</h2>
+    <p>Ready for your next movie adventure?</p>
+    <a th:href="@{/booking}" class="book-link">Book a Movie Now</a>
+
+    <h2 class="section-title">Your Booked Tickets (0)</h2>
+
+    <div th:if="${#lists.isEmpty(tickets)}">
+        <p>You haven't booked any tickets yet. <a th:href="@{/booking}">Click here to book a movie!</a></p>
+    </div>
+
+    <ul th:unless="${#lists.isEmpty(tickets)}" class="ticket-list">
+    </ul>
+
+    <p class="back-home">
+        <a th:href="@{/}">← Go back to Home</a>
+    </p>
+</div>
+
+</body>
+</html>

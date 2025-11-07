@@ -1,8 +1,111 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Movie Review System</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review System - Home</title>
+
+    <style>
+        /* CSS embedded directly in HTML */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font */
+            color: #fff;
+            text-align: center;
+
+            /* Interactive Background (Gradient) */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Animation Keyframes */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Flexbox for perfect centering */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .welcome-heading {
+            margin-bottom: 50px; /* Increased margin */
+            font-size: 3em; /* Larger font */
+            font-weight: bold;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Stronger shadow for pop */
+        }
+
+        .option-wrapper {
+            display: flex;
+            gap: 40px; /* Increased gap */
+            margin-bottom: 40px; /* Space before the signup link */
+        }
+
+        .option-button {
+            text-decoration: none;
+            padding: 18px 40px; /* Larger padding for bigger buttons */
+            border-radius: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s ease; /* Smoother transition */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+            border: none;
+        }
+
+        .option-button:hover {
+            transform: scale(1.05); /* Slight scale on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .admin-button {
+            background-color: #e74c3c; /* Flat Red for Admin */
+        }
+
+        .user-button {
+            background-color: #3498db; /* Flat Blue for User */
+        }
+
+        .signup-link a {
+            color: #ffcc00; /* Bright yellow/gold color */
+            font-size: 1.1em;
+            text-decoration: none;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 2px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+
+    </style>
+</head>
 <body>
-<h1>🎬 Welcome to Movie Review System</h1>
-<a href="/admin">Admin</a> | <a href="/signup">User</a>
+
+<div class="main-container">
+    <h1 class="welcome-heading">Welcome to the Movie Review System</h1>
+
+    <div class="option-wrapper">
+        <a href="/admin" class="option-button admin-button">Admin Access</a>
+        <a href="/user" class="option-button user-button">User Portal</a>
+    </div>
+
+    <div class="signup-link">
+        <span style="margin-right: 10px;">New user?</span>
+        <a href="/signup">Create an Account</a>
+    </div>
+</div>
+
 </body>
 </html>

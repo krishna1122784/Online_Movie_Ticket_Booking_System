@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie List</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="list-container">
+  <h1>🎞️ All Movies in System</h1>
+  <a th:href="@{/admin/add-movie}" class="add-button">+ Add New Movie</a>
+
+  <table class="movie-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${moviesList}">
+      <td th:text="${movie.id}">1</td>
+      <td th:text="${movie.title}">Inception</td>
+      <td th:text="${movie.releaseYear}">2010</td>
+      <td th:text="${movie.director}">Nolan</td>
+      <td class="action-cells">
+        <a th:href="@{/admin/edit/{id}(id=${movie.id})}" class="action-link edit-btn">Edit</a>
+
+        <a th:href="@{/admin/delete/{id}(id=${movie.id})}" class="action-link delete-btn"
+           onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{/admin}" class="back-link">← Back to Dashboard</a>
+</div>
+</body>
+</html>

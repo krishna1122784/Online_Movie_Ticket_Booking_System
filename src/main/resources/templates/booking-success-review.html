@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Success</title>
+
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e9ecef;
+        color: #343a40;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    h1 {
+        color: #28a745; /* Success color */
+        font-size: 2.8em;
+        margin-bottom: 5px;
+    }
+    .success-icon {
+        font-size: 3em;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+    /* NEW STYLING FOR THE MESSAGE BOX */
+    .promo-message-box {
+        background-color: #ffe0b2; /* Light orange/cinema tone */
+        color: #3e2723; /* Dark brown text */
+        padding: 15px 25px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        font-size: 1.4em;
+        font-weight: bold;
+        border-left: 5px solid #ff9800; /* Orange accent */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    /* --- */
+    .details-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        text-align: left;
+    }
+    .details-box p {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    .details-box strong {
+        color: #007bff;
+        font-weight: 600;
+    }
+    /* Buttons */
+    .button-group a {
+        display: inline-block;
+        padding: 12px 25px;
+        margin: 10px 5px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1em;
+        transition: all 0.3s ease;
+    }
+    .review-button {
+        background-color: #ffc107;
+        color: #343a40;
+        border: 2px solid #ffc107;
+    }
+    .review-button:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        transform: translateY(-2px);
+    }
+    .secondary-button {
+        background-color: #6c757d;
+        color: white;
+        border: 2px solid #6c757d;
+    }
+    .secondary-button:hover {
+        background-color: #5a6268;
+        border-color: #5a6268;
+        transform: translateY(-2px);
+    }
+    .movie-title-display {
+        font-size: 1.6em;
+        color: #343a40;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="success-icon">✅</div>
+  <h1>Booking Confirmed!</h1>
+
+  <div class="promo-message-box">
+    <p th:text="${message}"></p>
+  </div>
+
+  <div class="details-box">
+    <h2>Your Ticket Details</h2>
+    <p>Movie: <strong class="movie-title-display" th:text="${movieTitle}"></strong></p>
+    <p>Show Time: <strong><span th:text="${showTime}"></span></strong></p>
+    <p>Seats Booked: <strong><span th:text="${seatNumber}"></span></strong></p>
+  </div>
+
+  <h3>We hope you enjoy the movie!</h3>
+
+  <div class="button-group">
+    <a th:href="@{/review/form(movieTitle=${movieTitle})}" class="review-button">
+      Click here to review <span th:text="${movieTitle}"></span>
+    </a>
+
+    <br>
+
+    <a th:href="@{/user}" class="secondary-button dashboard-button">
+      Go to Dashboard
+    </a>
+    <a th:href="@{/booking}" class="secondary-button book-button">
+      Book another ticket
+    </a>
+  </div>
+</div>
+</body>
+</html>

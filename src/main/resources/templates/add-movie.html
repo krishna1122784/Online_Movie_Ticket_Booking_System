@@ -1,8 +1,41 @@
-<form th:action="@{/admin/add-movie}" th:object="${movies}" method="post">
-    <input type="text" th:field="*{title}" placeholder="Title"/><br/>
-    <input type="text" th:field="*{description}" placeholder="Description"/><br/>
-    <input type="text" th:field="*{showDate}" placeholder="Date"/><br/>
-    <input type="text" th:field="*{showTime}" placeholder="Time"/><br/>
-    <input type="number" th:field="*{totalSeats}" placeholder="Seats"/><br/>
-    <button type="submit">Add Movie</button>
-</form>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${movie.id == null ? 'Add New Movie' : 'Edit Movie'}">Movie Form</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="form-container">
+    <h1 th:text="${movie.id == null ? '➕ Add New Movie' : '✏️ Edit Movie: ' + movie.title}">Movie Form</h1>
+
+    <form
+            th:action="${movie.id == null ? @{/admin/add-movie} : @{/admin/update/{id}(id=${movie.id})}"
+            th:object="${movies}"
+            method="post"
+            class="movie-form">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="releaseYear">Release Year:</label>
+            <input type="number" id="releaseYear" th:field="*{releaseYear}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="director">Director:</label>
+            <input type="text" id="director" th:field="*{director}">
+        </div>
+
+        <button type="submit" class="submit-button" th:text="${movie.id == null ? 'Save Movie' : 'Update Movie'}">Submit</button>
+    </form>
+
+    <a th:href="@{/admin}" class="back-link">← Back to Admin Dashboard</a>
+</div>
+</body>
+</html>
